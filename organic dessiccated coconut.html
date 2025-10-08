@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NutriNut</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+
+    <main>
+        <section class="product-detail-section container">
+            
+            <a href="products.html" class="back-link"><i class='bx bx-left-arrow-alt'></i> Back to all products</a>
+
+            <div class="product-detail-grid">
+                
+                <!-- Left Column: Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="images/product8.jpg" alt="NutriNut Pure Coconut Oil">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        
+                        <img src="images/product8.jpg" alt="Product thumbnail 2">
+                       
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Information -->
+                <div class="product-info">
+                    <h1><span class="gradient-text">NutriNut Organic Dessicated Coconnut</span></h1>
+                    <p class="tagline">Your daily essential for healthy cooking and living.</p>
+
+                    <h4>Available Sizes</h4>
+                    <div class="size-options-grid">
+                        <div class="size-option">200 g</div>
+                        <div class="size-option">500 g</div>
+                        <div class="size-option">1 kg</div>
+                        <div class="size-option">25 kg(Bulk)</div>
+                    </div>
+
+                    <h4>Description</h4>
+                    <p>NutriNut Desiccated Coconut is made from 100% White Meat (Kernel) of well-matured coconuts. It is a natural, flavorful, and versatile ingredient for baking and cooking. This product contains No Cholesterol and is 100% Natural, Vegan & Vegetarian, and completely free from GMOs, Gluten, and major allergens. Certified Organic options are available.</p>
+
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Digestive & Weight Control: Rich in Dietary Fiber to improve gut health, reduce appetite, and support weight management.</li>
+                        <li>Immunity & Antioxidants: Contains essential minerals like Selenium, Copper, and Manganese which enhance the immune system and act as natural antioxidants.</li>
+                        <li>Heart Health: Supports a healthy heart by helping maintain healthy blood pressure and providing healthy saturated fatty acids.</li>
+                        <li>Energy: Supports energy levels and overall metabolism.</li>
+                        <li>Baking: Essential ingredient for Cookies, Cakes, Pancakes, and other confectionaries.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    
+    
+    <!-- This uses your same consistent script -->
+   <!-- ================== UPGRADED SCRIPT ================== -->
+    <script>
+        // --- Code for the sticky header (already here) ---
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- NEW: Code for the interactive image gallery ---
+        const mainImage = document.querySelector('.main-image img');
+        const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Get the image path from the clicked thumbnail
+                const newImageSrc = this.src;
+
+                // Set the main image to the new path
+                mainImage.src = newImageSrc;
+
+                // Update the active thumbnail style
+                thumbnails.forEach(t => t.classList.remove('active')); // Remove active class from all
+                this.classList.add('active'); // Add active class to the one that was clicked
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NutriNut</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    
+
+    <main>
+        <section class="product-detail-section container">
+            
+            <a href="products.html" class="back-link"><i class='bx bx-left-arrow-alt'></i> Back to all products</a>
+
+            <div class="product-detail-grid">
+                
+                <!-- Left Column: Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="images/product2.jpg" alt="NutriNut Pure Coconut Oil">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <img src="images/product2.jpg" alt="Product thumbnail 1" class="active">
+                        <img src="images/HE EH.jpg" alt="Product thumbnail 2">
+                        
+                        <img src="images/palm-trees.jpg" alt="Product thumbnail 4">
+                        <img src="images/_FLA7830_csjf3s.jpg" alt="Product thumbnail 4">
+                        <img src="images/product1.jpg" alt="Product thumbnail 4">
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Information -->
+                <div class="product-info">
+                    <h1><span class="gradient-text">NutriNut Pure Coconut Oil</span></h1>
+                    <p class="tagline">Your daily essential for healthy cooking and living.</p>
+
+                    <h4>Available Sizes</h4>
+                    <div class="size-options-grid">
+                         <div class="size-option">200ml</div>
+                        <div class="size-option">250 Ml</div>
+                        <div class="size-option">320 ml</div>
+                        <div class="size-option">500 ml</div>
+                        <div class="size-option">750 ml</div>
+                        <div class="size-option">1 litre</div>
+                        <div class="size-option">2 litre</div>
+                        <div class="size-option">3  litre</div>
+                        <div class="size-option">18 kg</div>
+                        <div class="size-option">180 kg</div>
+                        <div class="size-option">920 kg (Bulk)</div>
+                    </div>
+
+                    <h4>Description</h4>
+                    <p>NutriNut Pure Coconut Oil is a versatile, all-natural oil perfect for a variety of uses. Cold-pressed from the finest coconuts, it retains its natural flavor and nutritional value. Ideal for cooking, baking, frying, and even as a natural moisturizer for skin and hair.</p>
+
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Enhances flavor in various dishes</li>
+                        <li>Rich in beneficial medium-chain triglycerides (MCTs)</li>
+                        <li>Supports healthy metabolism</li>
+                        <li>Excellent for skin and hair care</li>
+                        <li>Naturally gluten-free and vegan-friendly</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    
+    
+    <!-- ================== UPGRADED SCRIPT ================== -->
+    <script>
+        // --- Code for the sticky header (already here) ---
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- NEW: Code for the interactive image gallery ---
+        const mainImage = document.querySelector('.main-image img');
+        const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Get the image path from the clicked thumbnail
+                const newImageSrc = this.src;
+
+                // Set the main image to the new path
+                mainImage.src = newImageSrc;
+
+                // Update the active thumbnail style
+                thumbnails.forEach(t => t.classList.remove('active')); // Remove active class from all
+                this.classList.add('active'); // Add active class to the one that was clicked
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

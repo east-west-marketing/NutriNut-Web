@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NutriNut</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   
+
+    <main>
+        <section class="product-detail-section container">
+            
+            <a href="products.html" class="back-link"><i class='bx bx-left-arrow-alt'></i> Back to all products</a>
+
+            <div class="product-detail-grid">
+                
+                <!-- Left Column: Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="images/product11.jpg" alt="NutriNut Pure Coconut Oil">
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <img src="images/Screenshot 2025-10-03 131012.png" alt="Product thumbnail 1" class="active">
+                        <img src="images/Screenshot 2025-10-03 131023.png" alt="Product thumbnail 2">
+                        <img src="images/Screenshot 2025-10-03 131035.png" alt="Product thumbnail 3">
+                        <img src="images/product11.jpg" alt="Product thumbnail 3">
+                        
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Information -->
+                <div class="product-info">
+                    <h1><span class="gradient-text">NutriNut Handmade Organic  Bathing Soap</span></h1>
+                    <p class="tagline">Your daily essential for healthy cooking and living.</p>
+
+                    <h4>Available Types</h4>
+                    <div class="size-options-grid">
+                        <div class="size-option">cinnamon</div>
+                        <div class="size-option">charcol</div>
+                        <div class="size-option">Aloe vera</div>
+                        
+                    </div>
+
+                    <h4>Description</h4>
+                    <p>At NutriNut, we produce natural soap using Organic Virgin Coconut Oil, blended with 100% natural Ayurvedic herbals, sustainable plant-based essential oils, and natural fragrances. Our soaps are completely free from harsh chemicals, pore-clogging animal fats, lathering agents, and synthetic preservatives.We utilize the traditional Cold Process method, hand-making every bar in small batches. This process ensures that all the goodness and rich nutrient profiles of the natural ingredients are secured in the final, long-lasting bar. Each bar is cured for 6-10 weeks to achieve a mild, rich lather.We ensure an Eco-friendly process to keep your skin happy and healthy while securing environmental sustainability.</p>
+
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Ultra-Clean Ingredients: Made with Organic Virgin Coconut Oil and 100% natural herbals, free from harsh chemicals, synthetic preservatives, and pore-clogging animal fats.</li>
+                        <li>Nutrient-Rich Formula: The Cold Process method is used in small batches to secure the goodness and rich nutrient profile of every ingredient.</li>
+                        <li>Mild & Long-Lasting: Each bar is cured for 6-10 weeks, naturally hardening into a mild, rich-lathering, and long-lasting soap.</li>
+                        <li>Natural Moisturization: The saponification process naturally creates Glycerol, a crucial component that keeps your skin happy and healthy by locking in moisture.</li>
+                        <li>Eco-Conscious Production: We ensure an Eco-friendly process by preventing the use of harsh chemicals</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    
+    
+    <!-- This uses your same consistent script -->
+   <!-- ================== UPGRADED SCRIPT ================== -->
+    <script>
+        // --- Code for the sticky header (already here) ---
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- NEW: Code for the interactive image gallery ---
+        const mainImage = document.querySelector('.main-image img');
+        const thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Get the image path from the clicked thumbnail
+                const newImageSrc = this.src;
+
+                // Set the main image to the new path
+                mainImage.src = newImageSrc;
+
+                // Update the active thumbnail style
+                thumbnails.forEach(t => t.classList.remove('active')); // Remove active class from all
+                this.classList.add('active'); // Add active class to the one that was clicked
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

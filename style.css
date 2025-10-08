@@ -1,0 +1,1026 @@
+/* ================== GLOBAL STYLES & VARIABLES ================== */
+:root {
+    --brand-orange: #FF6B00;
+    --dark-grey: #222222;
+    --text-grey: #444444;
+    --light-grey: #F5F5F5; /* We will use this for alternating backgrounds */
+    --white: #FFFFFF;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-grey);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--dark-grey);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; text-align: center; margin-bottom: 3rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--brand-orange);
+}
+
+section {
+    padding: 6rem 0;
+}
+
+/* ================== BUTTONS ================== */
+.button {
+    display: inline-block;
+    background-color: var(--brand-orange);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+.button:hover {
+    background-color: #05522e;
+}
+
+.button-outline {
+    display: inline-block;
+    border: 2px solid var(--brand-orange);
+    color: var(--brand-orange);
+    background-color: var(--white);
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+.button-outline:hover {
+    background-color: var(--brand-orange);
+    color: var(--white);
+}
+
+/* ================== HEADER (UPDATED for Scroll Effect) ================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: top 0.4s;
+}
+
+/* This is the container for the pill shape */
+.nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    
+    /* Default transparent look & smooth transition */
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Adds a modern frosted glass effect */
+    box-shadow: none; /* No shadow at the top */
+    border-top: 3px solid transparent; /* Placeholder for a smooth transition */
+    transition: background-color 0.4s, box-shadow 0.4s, border-top 0.4s; /* Smooth animation */
+    
+    /* These styles organize the content inside */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* This style applies ONLY when you scroll */
+.header.scrolled .nav {
+    background-color: var(--white); /* Becomes solid white */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* The shadow appears */
+    /* --- NEW ---: Adds the orange top border on scroll */
+    border-top: 3px solid var(--brand-orange); 
+}
+
+.nav-logo img {
+    height: 40px;
+}
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-link {
+    color: var(--text-grey);
+    font-weight: 600;
+}
+.nav-link:hover {
+    color: var(--brand-orange);
+}
+/* ================== HERO SECTION (UPDATED FOR SEPARATION) ================== */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 8rem; /* Increased padding to account for sticky header */
+    padding-bottom: 10rem; /* Increased padding to give space for the curve */
+    background-color: var(--white); /* Explicitly set a background */
+    position: relative; /* Needed for the shape divider */
+}
+.hero-image {
+    flex: 1;
+}
+.hero-content {
+    flex: 1;
+}
+
+/* --- NEW CODE: SHAPED DIVIDER --- */
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px; /* Controls the size of the curve */
+    background-color: var(--light-grey); /* MUST match the background of the next section */
+    border-top-left-radius: 50% 100%; /* Creates the curve */
+    border-top-right-radius: 50% 100%; /* Creates the curve */
+}
+
+/* ================== HERO SECTION (UPGRADED FOR BEAUTIFUL SEPARATION) ================== */
+.hero {
+    /* This adds the background image with a light transparent effect */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('images/hero-bg.jpg');
+    
+    background-size: cover; /* Ensures the image covers the whole section */
+    background-position: center; /* Centers the image */
+    
+    padding: 12rem 0 12rem 0; /* Increased bottom padding to make space for the curve and overlap */
+    text-align: center; /* Centers the text and button */
+    position: relative;
+    border-bottom: 1px solid var(--light-grey); /* Fallback border */
+}
+
+.hero-content {
+    max-width: 700px; /* Keeps the text from getting too wide */
+    margin: 0 auto;
+}
+
+/* --- UPGRADED SHAPED DIVIDER --- */
+.hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Sits perfectly on the bottom edge */
+    width: 100%;
+    height: 120px; /* Controls the size of the curve */
+    background-color: var(--light-grey); /* MUST match the background of the next section */
+    
+    /* This creates a more elegant, sweeping curve */
+    -webkit-clip-path: ellipse(80% 100% at 50% 100%);
+    clip-path: ellipse(80% 100% at 50% 100%);
+}
+
+/* ================== WHY CHOOSE US (FEATURES) SECTION (UPGRADED) ================== */
+/* ================== WHY CHOOSE US (FEATURES) SECTION (UPGRADED WITH BG IMAGE) ================== */
+.features {
+    /* --- NEW: Replaced grey color with a background image --- */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('images/tricolor-indian-flag-theme-modern-watercolor-elegant-background_1055-21627.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    padding-top: 0; 
+    padding-bottom: 6rem;
+    position: relative;
+    z-index: 2;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    /* --- NEW: This pulls the cards up --- */
+    position: relative;
+    z-index: 2; /* Ensures the cards sit ON TOP of the curve */
+    transform: translateY(10px); /* Adjust this value to control the overlap */
+}
+
+.feature-card {
+    
+    padding: 2.5rem 2rem;
+    border-radius: 15px; /* Softer, more modern corners */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* A softer, more pronounced shadow */
+    border-top: 4px solid transparent;
+    transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-top-color: var(--brand-orange);
+}
+.feature-card i {
+    font-size: 3rem;
+    color: var(--brand-orange);
+    margin-bottom: 1rem;
+}
+/* ================== PRODUCTS PAGE SECTION (UPGRADED DESIGN) ================== */
+.products {
+    background-color: var(--light-grey);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden; /* Important for the image zoom effect */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    
+    /* --- NEW: FADE-IN ANIMATION --- */
+    opacity: 0; /* Starts invisible */
+    transform: translateY(20px); /* Starts slightly lower */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-in-out;
+}
+
+/* --- NEW: FADE-IN ANIMATION TRIGGER --- */
+.product-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- NEW: HOVER EFFECT on the card --- */
+.product-card:hover {
+    transform: translateY(-5px); /* Lifts the card up */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1); /* Increases the shadow */
+}
+
+.product-image-container {
+    overflow: hidden; /* Keeps the zooming image inside the container */
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    
+    /* --- NEW: Image transition for smooth zoom --- */
+    transition: transform 0.4s ease-in-out;
+}
+
+/* --- NEW: HOVER EFFECT on the image --- */
+.product-card:hover .product-image-container img {
+    transform: scale(1.05); /* Zooms the image in slightly */
+}
+
+.product-content {
+    padding: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-content h3 {
+    margin-top: 0;
+}
+
+.product-content p {
+    flex-grow: 1;
+}
+
+.product-content .button {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* ================== UPGRADED FOOTER STYLES ================== */
+/* ================== UPGRADED FOOTER STYLES (DARK VERSION) ================== */
+.footer {
+    background-color: var(--dark-grey); /* CHANGED to dark grey */
+    color: #ccc; /* Light grey text for readability */
+    padding: 3rem 0 0 0;
+    border-top: 1px solid #444; /* Darker border */
+}
+
+.footer-container {
+    display: flex; /* switch from grid to flex for better vertical alignment control */
+    justify-content: space-between;
+    align-items: flex-start; /* ensures all columns align from the top */
+    gap: 4rem;
+    padding-bottom: 4rem;
+    flex-wrap: wrap; /* makes it responsive */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-about {
+    flex: 1.5;
+    min-width: 280px;
+}
+
+.footer-col h4 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+
+.footer-about .footer-logo img {
+    height: 45px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer-list li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-list a {
+    color: #ccc; /* Light grey links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-list a:hover {
+    color: var(--white); /* White on hover */
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: #ccc; /* Light grey icons */
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--white); /* White on hover */
+}
+
+/* ... (existing styles above) ... */
+
+/* Awards section adjustments */
+.awards {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.award-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.award-item:first-child {
+    margin-top: 0.3rem;
+}
+
+
+/* ... (rest of the awards styles) ... */
+
+
+.footer-copyright {
+    text-align: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid #444;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive styles for the new footer --- */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+
+/* --- NEW: ABOUT US PAGE STYES --- */
+
+/* --- ABOUT US HERO SECTION (UPDATED WITH BACKGROUND IMAGE) --- */
+.about-hero {
+    /* This line adds the background image with a dark transparent effect */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/palm-trees.jpg');
+    
+    background-size: cover; /* Ensures the image covers the whole section */
+    background-position: center; /* Centers the image */
+    padding: 12rem 0 8rem 0; 
+    text-align: center;
+    color: var(--white);
+}
+
+.about-hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.about-hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+}
+
+
+
+/* --- Story Section (UPDATED FOR TWO IMAGES) --- */
+.story-section {
+    padding: 6rem 0;
+}
+.story-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem; /* Space between text and images */
+}
+.story-text { 
+    flex: 1; /* Text takes up half the space */
+}
+
+/* This is the new container for the two images */
+.story-images-column {
+    flex: 1; /* Images take up the other half */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between the two images */
+}
+
+.story-images-column img {
+    width: 100%;
+    border-radius: 15px; /* Softer, more modern rounded corners */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+}
+
+/* Green Button Variation */
+.button-green {
+    display: inline-block;
+    background-color: #2E7D32; /* A nice, natural green */
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+.button-green:hover {
+    background-color: #1B5E20;
+}
+
+/* Define Variables (assuming these are in your global CSS) */
+:root {
+    --white: #ffffff;
+    --heading-color: #333333;
+    --text-grey: #666666;
+    --brand-orange: #ff9933; /* Used for the ribbon */
+    --light-grey-bg: #f7f7f7; /* New: The desired grey background color */
+}
+
+/* --- MISSION, VISION, VALUES (MVV) SECTION STYLES --- */
+.mvv-section {
+    /* Critical updates for full separation and background */
+    padding: 6rem 0;
+    margin: 4rem 0; /* Add margin above and below to separate from other sections */
+    background-color: var(--light-grey-bg); /* Full grey background */
+    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for separation */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border for separation */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.03); /* Slight shadow effect */
+    text-align: center;
+}
+
+
+
+/* Styles for the main grid container */
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 50px; 
+    /* Ensures the grid content is horizontally centered within the .container */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mvv-card {
+    background-color: var(--white); /* White card background */
+    padding: 2rem;
+    border-radius: 1.5rem;
+    /* Mimic the subtle shadow/border from the desired image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    position: relative;
+    text-align: center;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mvv-icon-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border: 2px solid #ddd; 
+    padding: 5px; 
+}
+
+.mvv-icon-container svg {
+    width: 40px;
+    height: 40px;
+    stroke-width: 2.5;
+}
+
+/* CRITICAL: Redesigning the Tag/Ribbon to match the image (downward pointer) */
+.mvv-title-tag {
+    position: absolute;
+    top: -45px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    /* Creates the downward arrow/tail (triangle pointing down) */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 55% 70%, 50% 100%, 45% 70%, 0% 70%);
+    padding-bottom: 1rem; /* Adjust padding to make space for the tail effect */
+}
+
+/* Small flag/pin detail */
+.mvv-flag {
+    position: absolute;
+    top: -15px; 
+    right: 15px;
+    z-index: 6;
+    /* Small flag icon made with CSS */
+    width: 15px;
+    height: 10px;
+    background-color: #5cb85c;
+    border-radius: 3px;
+    transform: rotate(15deg);
+}
+.mvv-flag:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 7px;
+    width: 2px;
+    height: 30px;
+    background-color: #ddd;
+}
+
+
+/* Text Styling */
+.mvv-card h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--heading-color);
+    font-weight: 700;
+}
+
+.mvv-card p {
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    max-width: 90%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .mvv-grid {
+        grid-template-columns: 1fr;
+        gap: 5rem; /* Increase vertical gap between stacked cards */
+    }
+}
+
+
+
+/* --- COMMITMENT (STATS) SECTION STYLES --- */
+.commitment-section {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/workers in nutrinnut.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates a nice parallax effect */
+    padding: 6rem 0;
+    text-align: center;
+}
+.commitment-content h2 {
+    color: var(--white);
+    margin-bottom: 3rem;
+}
+.commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.commitment-card {
+    background-color: rgba(255, 255, 255, 0.1); /* Frosted glass effect */
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.commitment-card i {
+    font-size: 2.5rem;
+    color: var(--brand-orange);
+}
+.commitment-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0.5rem 0;
+}
+.commitment-label {
+    font-size: 1rem;
+    color: #eee;
+}
+
+/* --- RESPONSIVE STYLES FOR ABOUT PAGE --- */
+@media (max-width: 768px) {
+    .story-content {
+        flex-direction: column;
+    }
+    .commitment-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- NEW: CONTACT US PAGE STYLES --- */
+
+/* Contact Hero Section */
+.contact-hero {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/palm-trees.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 10rem 0 6rem 0;
+    text-align: center;
+    color: var(--white);
+}
+.contact-hero h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+}
+
+/* Info Cards Section */
+.info-cards-section {
+    transform: translateY(-50px); /* Pulls the cards up into the hero image */
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+.info-card {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.info-card i {
+    font-size: 2rem;
+    color: var(--brand-orange);
+    margin-bottom: 1rem;
+}
+.info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact Main Section */
+.contact-main-section {
+    padding-top: 0;
+}
+.contact-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+.get-in-touch-wrapper {
+    background-color: var(--light-grey);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+/* Form Styles from previous steps */
+.contact-form { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; width: calc(50% - 0.75rem); }
+.form-group.full-width { width: 100%; }
+.form-group label { margin-bottom: 0.5rem; font-weight: 600; color: var(--dark-grey); }
+.form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #ddd; border-radius: 5px; font-family: var(--font-family); font-size: 1rem; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--brand-orange); }
+.form-group button { width: 100%; border: none; cursor: pointer; }
+
+/* Remove white gap between map and footer */
+.map-section {
+    margin: 0;
+    padding: 0;
+}
+
+.map-section h2 {
+    margin: 0; /* removes top and bottom space around the heading */
+    padding: 1rem 0; /* optional: keeps small spacing above the map */
+    text-align: center;
+}
+
+.map-container {
+    margin: 0;
+    padding: 0;
+    line-height: 0; /* removes tiny inline gaps around iframe */
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* --- RESPONSIVE STYLES for Contact Page --- */
+@media (max-width: 992px) {
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contact-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    .form-group {
+        width: 100%;
+    }
+}
+
+* -------------------------------------------------------------------------- */
+/* (2) PRODUCT PAGE SPECIFIC STYLES: This powerful selector ensures 
+/* the background image ONLY applies when 'body.product-page' is present.
+/* -------------------------------------------------------------------------- */
+body.product-page main {
+    /* Use your actual image path here! Ensure the filename is correct, 
+       including the quotes for spaces/special characters. */
+    background-image: url('images/abstract-green-orange-gradient-background-texture-design-colorful-gradient-background_861973-10801.jpg'); 
+    
+    /* These properties ensure the image covers the area and is fixed */
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center; 
+    
+    /* IMPORTANT: Clear the background-color so the image shows through */
+    background-color: transparent !important;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* (3) PRODUCT DETAIL SECTION: Remains transparent over the background image
+/* -------------------------------------------------------------------------- */
+.product-detail-section {
+    padding-top: 3rem;  /* ↓ reduced from 10rem to 3rem */
+    padding-bottom: 5rem;
+    background-color: transparent !important; 
+    margin: 0 auto; 
+    max-width: 1200px; 
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); 
+}
+
+
+
+
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-grey);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    transition: color 0.3s;
+    /* 🆕 Add this to bring it closer to the top */
+    position: relative;
+    top: -1rem;   /* Move up slightly (you can try -0.5rem to -1.5rem depending on taste) */
+}
+.back-link:hover {
+    color: var(--brand-orange);
+}
+.back-link i {
+    font-size: 1.5rem;
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.main-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEW: Gradient Styling for Product Name (NutriNut) */
+/* -------------------------------------------------------------------------- */
+.gradient-text {
+    /* Set the gradient background: Orange-Yellow to Bright Green */
+    background: linear-gradient(90deg, #FF8C00 0%, #38B000 100%); 
+    
+    /* Clip the background to the shape of the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Make the text transparent so the background gradient shows through */
+    color: transparent;
+    
+    /* Ensure the text is bold and stands out */
+    font-weight: 700;
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEW: Thumbnail Gallery Styling for Fixed Image Size */
+/* -------------------------------------------------------------------------- */
+.thumbnail-gallery {
+    display: flex; /* Use flexbox to align items in a row */
+    gap: 10px; /* Space between thumbnails */
+    margin-top: 15px;
+    overflow-x: auto; /* Allows horizontal scrolling if many images are present */
+    padding-bottom: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEW: Thumbnail Gallery Styling for Fixed Image Size */
+/* -------------------------------------------------------------------------- */
+.thumbnail-gallery {
+    display: flex; /* Use flexbox to align items in a row */
+    gap: 10px; /* Space between thumbnails */
+    margin-top: 15px;
+    overflow-x: auto; /* Allows horizontal scrolling if many images are present */
+    padding-bottom: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* NEW: Thumbnail Gallery Styling for Fixed Image Size */
+/* -------------------------------------------------------------------------- */
+.thumbnail-gallery {
+    display: flex; /* Use flexbox to align items in a row */
+    gap: 10px; /* Space between thumbnails */
+    margin-top: 15px;
+    overflow-x: auto; /* Allows horizontal scrolling if many images are present */
+    padding-bottom: 10px;
+}
+
+.thumbnail-gallery img {
+    /* Fixed size for all thumbnails to ensure consistency */
+    width: 130px; 
+    height: 130px;
+    
+    /* Ensures the image fills the container without distortion (cropping if necessary) */
+    object-fit: cover; 
+    
+    border-radius: 8px; /* Rounded corners for a modern look */
+    cursor: pointer;
+    
+    /* FIX: Darker border and a subtle inner shadow for better visibility and definition */
+    border: 2px solid #cccccc; /* Default border is now slightly darker grey */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+    
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Prevents images from shrinking */
+}
+
+
+
+
+.thumbnail-gallery img:hover,
+.thumbnail-gallery img.active {
+    border-color: var(--brand-orange);
+}
+
+.product-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.product-info .tagline {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+}
+.product-info h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.size-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.size-option {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+}
+.benefits-list li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.8rem;
+}
+.benefits-list li::before {
+    content: '\2713'; /* Checkmark symbol */
+    position: absolute;
+    left: 0;
+    color: #2E7D32; /* A nice green color for the checkmark */
+    font-weight: bold;
+}
+
+/* --- Responsive Styles for Single Product Page --- */
+@media (max-width: 992px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr; /* Stacks the columns on tablets and mobile */
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* NEW: Gradient Styling for Product Name (NutriNut) */
+/* -------------------------------------------------------------------------- */
+.gradient-text {
+    /* Set the gradient background: Orange-Yellow to Bright Green */
+    background: linear-gradient(90deg, #FF8C00 0%, #38B000 100%); 
+    
+    /* Clip the background to the shape of the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* Make the text transparent so the background gradient shows through */
+    color: transparent;
+    
+    /* Ensure the text is bold and stands out */
+    font-weight: 700;
+}
+
